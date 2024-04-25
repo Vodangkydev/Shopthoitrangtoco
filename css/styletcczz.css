@@ -1,0 +1,590 @@
+body{
+    margin: 0x;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+.wrapper{
+    border: 1x solid #000;
+    height: auto;
+    width: 1600px;
+    margin: 0 auto;
+}
+.header{
+    border: 1px solid rgb(154, 4, 4);
+    height: 350px;
+    width: 1600px;
+    background: url('../images/2107.jpg') center center no-repeat;    background-repeat: no-repeat;
+    background-size: 100% 350px;
+}
+
+.menu{
+    border: 1px solid rgb(22, 185, 8);
+    height: 50px;
+    width: 1600px;
+    background-color: aquamarine;
+    font-family: Helvetica
+}
+ul.list_menu{
+    padding: 0px;
+    margin: 0;
+    width: 900px;
+    list-style: none;
+    margin: 0 auto;
+    line-height: 30px;
+    
+    
+
+
+}
+ul.list_menu li{
+  float: left;
+  margin: 5px;
+  padding: 5px;
+
+}
+ul.list_menu li:hover{
+   background-color: rgb(208, 93, 5);
+  
+}
+ul.list_menu li a{
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    color: blue;
+    
+  
+}
+
+
+#main{
+    border: 1px solid rgb(81, 20, 212);
+    height: auto;
+    width: 1600px;
+   
+}
+.sidebar{
+    height: auto;
+    width: 20%;
+    float: left;
+    margin: 5px;
+    font-family: Helvetica;
+    
+
+    
+
+}
+ul.list_sidebar{
+    padding: 0px;
+    margin: 0;
+    width: 100%;
+    list-style: none;
+    line-height: 20px;
+    font-family: Helvetica;
+    
+
+
+
+
+}
+ul.list_sidebar li{
+
+  margin: 7px;
+  padding: 5px;
+
+}
+ul.list_sidebar li:hover{
+   background-color: rgb(208, 93, 5);
+  
+}
+ul.list_sidebar li a{
+    text-decoration: none;
+    text-align: center;
+    color:blue;
+    display: block;
+  
+}
+
+.maincontent{
+    border: 1px solid rgb(180, 9, 146);
+    height: auto;
+    width: 78.8%;
+   margin-top: 5px;
+   margin-right: 5px;
+    float: right;
+}
+ul.product_list{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 100%;
+   
+}
+ul.product_list li {
+    width: 298px;
+    height: 430px;
+    border: 1px solid black;
+    margin: 7px;
+    float: left;
+
+}
+ul.product_list img {
+    width: 295px;
+    height: 260px;
+    padding: 2px;
+ 
+    
+}
+ul.product_list li:hover{
+    background-color: aquamarine;
+}
+ul.product_list li a{
+    text-decoration: none;
+}
+
+.clear{
+    clear: both;
+}
+.footer{
+  border: 1px solid rgb(133, 9, 9);
+  height: 100px;
+  width: 100%;
+  background-color: aquamarine;
+}
+.copyright{
+    text-align: center;
+    line-height: 100px;
+   
+}
+
+.hinhanh_sanpham img{
+    padding: 5px;
+    width: 470px;
+    height: 510px;
+    float: right;
+    
+}
+
+.chitiet_sanpham {
+
+   padding: 5px;
+   
+}
+.anh_chitiet img{
+    height: 250px;
+    width: 250px;
+    float: left;
+    padding: 5px;
+
+}
+.name_sp{
+  
+  color: #000;
+  font-size: 25px;
+  font-weight: bold;
+  padding-left: 10px;
+  text-align: center;
+}
+.gia_sp{
+
+  color: red;
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 10px;
+  text-align: center;
+}
+.chitiet_sanpham p{
+  color: #000;
+  font-size: 25px;
+  font-weight: bold;
+  padding-left: 10px;
+  text-align: center;
+}
+.chitiet_sanpham p.gia_sp{
+  color:red;
+
+}
+
+.custom-button {
+    text-align: center;
+    background-color: #ccc;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+.container {
+    display: flex;
+    justify-content: center;
+}
+.custom-button:hover{
+    background-color: #555;
+}
+
+.themvaogiohang{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.inputgiohang{
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px 2px;
+  cursor: pointer;
+}
+.inputgiohang:hover{
+  background-color: #c82333;
+}
+
+
+
+.bang{
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    
+}
+.bang1{
+  width: 26%;
+    border-collapse: collapse;
+    text-align: center;
+
+}
+ul.list_trang{
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+
+}
+ul.list_trang li{
+    padding: 5px 13px;
+    margin: 5px;
+    background-color: burlywood;
+    float: left;
+    display: block;
+    
+}
+ul.list_trang li a{
+    color: #000;
+    text-align: center;
+    text-decoration: none;
+    color: blue;
+
+}
+.trang{
+    padding-left: 45%;
+}
+
+
+
+
+
+
+  /* jQuery Demo */
+
+.clearfix:after {
+  clear: both;
+  content: "";
+  display: block;
+  height: 10px;
+}
+
+.arrow-steps .step {
+  font-size: 25px;
+  text-align: center;
+  color: #777;
+  cursor: default;
+  margin: 0 1px 0 0;
+  padding: 10px 0px 10px 0px;
+  width: 24%;
+  float: left;
+  position: relative;
+  background-color: #ddd;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+}
+
+.arrow-steps .step a {
+  color: #777;
+  text-decoration: none;
+}
+
+.arrow-steps .step:after,
+.arrow-steps .step:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -17px;
+  width: 0;
+  height: 0;
+  border-top: 19px solid transparent;
+  border-bottom: 17px solid transparent;
+  border-left: 17px solid #ddd;
+  z-index: 2;
+}
+
+.arrow-steps .step:before {
+  right: auto;
+  left: 0;
+  border-left: 17px solid #fff;
+  z-index: 0;
+}
+
+.arrow-steps .step:first-child:before {
+  border: none;
+}
+
+
+
+.arrow-steps .step:first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.arrow-steps .step:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.arrow-steps .step span {
+  position: relative;
+}
+
+*.arrow-steps .step.done span:before {
+  opacity: 1;
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -10px;
+  font-size: 11px;
+  line-height: 21px;
+}
+
+.arrow-steps .step.current {
+  color: #fff;
+  background-color: #5599e5;
+}
+
+.arrow-steps .step.current a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.arrow-steps .step.current:after {
+  border-left: 17px solid #5599e5;
+}
+
+.arrow-steps .step.done {
+  color: #173352;
+  background-color: #2f69aa;
+}
+
+.arrow-steps .step.done a {
+  color: #173352;
+  text-decoration: none;
+}
+
+.arrow-steps .step.done:after {
+  border-left: 17px solid #2f69aa;
+}
+
+.hinhthucthanhtoan {
+  margin-bottom: 20px;
+  margin-left: 45%;
+}
+
+.hinhthucthanhtoan h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.form-check {
+  margin-bottom: 10px;
+
+}
+
+.form-check-input {
+  margin-right: 5px;
+}
+.form-check-label {
+ font-size: 20px;
+}
+.form-check input,
+.form-check label {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+.col-md-8{
+  float: left;
+ 
+}
+.vanchuyen{
+  display: block;
+  margin-left: 10%;
+
+}
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input.form-control {
+  width:30%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+input.form-control:focus {
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+.btn-success {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #218838;
+}
+.btn-primary {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+
+
+
+a {
+  text-decoration: none;
+}
+.chinhsua{
+  font-size: 25px;
+  color: blue;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+table th {
+  background-color: #f2f2f2;
+
+}
+
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tr:hover {
+  background-color: #e6e6e6;
+}
+
+table a {
+  text-decoration: none;
+  color: blue;
+}
+.thongtinvanchuyenvagiohang {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.thongtinvanchuyenvagiohang h1 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.thongtinvanchuyenvagiohang ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.thongtinvanchuyenvagiohang li {
+  margin-bottom: 5px;
+}
+
+.thongtinvanchuyenvagiohang li b {
+  color: blue;
+}
+
+.lienhe{
+ 
+  text-align: center;
+}
+.logo-img {
+  width: 100px; /* Kích thước chiều rộng mới của hình ảnh logo */
+  height: auto; /* Cho phép chiều cao tự động điều chỉnh dựa trên chiều rộng */
+  
+  float: right; /* Căn logo về bên trái */
+  float: left; /* Căn logo về bên trái */
+  margin-left: 50px; 
+  margin-right: 50px; 
+   display: block;
+   
+}
+
+/* Kiểu dáng cho hình ảnh logo */
+.logo-img {
+  max-width: 100%; /* Đảm bảo hình ảnh không tràn ra khỏi kích thước của nó */
+  height: auto; /* Để hình ảnh không bị biến dạng */
+}
+
+
+
+
