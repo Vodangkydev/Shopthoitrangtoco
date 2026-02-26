@@ -4,10 +4,10 @@
   <br>
   <!-- Responsive Arrow Progress Bar -->
   <div class="arrow-steps clearfix">
-    <div class="step done"> <span> <a href="index2.php?quanly=giohang" >Giỏ hàng</a></span> </div>
-    <div class="step current"> <span><a href="index2.php?quanly=vanchuyen" >Vận chuyển</a></span> </div>
-    <div class="step"> <span><a href="index2.php?quanly=hinhthucthanhtoan" >Thanh toán</a><span> </div>
-    <div class="step"> <span><a href="index2.php?quanly=lichsudonhang" >Lịch sử đơn hàng</a><span> </div>
+    <div class="step done"> <span> <a href="index.php?quanly=giohang" >Giỏ hàng</a></span> </div>
+    <div class="step current"> <span><a href="index.php?quanly=vanchuyen" >Vận chuyển</a></span> </div>
+    <div class="step"> <span><a href="index.php?quanly=hinhthucthanhtoan" >Thanh toán</a><span> </div>
+    <div class="step"> <span><a href="index.php?quanly=lichsudonhang" >Lịch sử đơn hàng</a><span> </div>
   </div>
   <?php
   } 
@@ -22,8 +22,9 @@
  		$id_dangky = $_SESSION['id_khachhang'];
  		$sql_them_vanchuyen = mysqli_query($con,"INSERT INTO shipping(name,phone,address,note,id_dangky) VALUES('$name','$phone','$address','$note','$id_dangky')");
  		if($sql_them_vanchuyen){
- 			echo '<script>alert("Thêm vận chuyển thành công")</script>';
-
+ 			// Đồng bộ lại thông tin profile (bảng khachhang)
+ 			mysqli_query($con,"UPDATE khachhang SET tenkhachhang='$name', dienthoai='$phone', diachi='$address' WHERE id='$id_dangky'");
+ 			echo '<script>alert(\"Thêm vận chuyển thành công\")</script>';
  		}
  	}elseif(isset($_POST['capnhatvanchuyen'])){
  		$name = $_POST['name'];
@@ -33,8 +34,9 @@
  		$id_dangky = $_SESSION['id_khachhang'];
  		$sql_update_vanchuyen = mysqli_query($con,"UPDATE shipping SET name='$name',phone='$phone',address='$address',note='$note',id_dangky='$id_dangky' WHERE id_dangky='$id_dangky'");
  		if($sql_update_vanchuyen){
- 			echo '<script>alert("Cập nhật vận chuyển thành công")</script>';
-
+ 			// Đồng bộ lại thông tin profile (bảng khachhang)
+ 			mysqli_query($con,"UPDATE khachhang SET tenkhachhang='$name', dienthoai='$phone', diachi='$address' WHERE id='$id_dangky'");
+ 			echo '<script>alert(\"Cập nhật vận chuyển thành công\")</script>';
  		}
  	}
  ?>
@@ -44,16 +46,25 @@
  	$sql_get_vanchuyen = mysqli_query($con,"SELECT * FROM shipping WHERE id_dangky='$id_dangky' LIMIT 1");
  	$count = mysqli_num_rows($sql_get_vanchuyen);
  	if($count>0){
+ 		// Đã có thông tin giao hàng, sử dụng dữ liệu từ bảng shipping
  		$row_get_vanchuyen = mysqli_fetch_array($sql_get_vanchuyen);
  		$name = $row_get_vanchuyen['name'];
  		$phone = $row_get_vanchuyen['phone'];
  		$address = $row_get_vanchuyen['address'];
  		$note = $row_get_vanchuyen['note'];
  	}else{
-
- 		$name = '';
- 		$phone = '';
- 		$address = '';
+ 		// Chưa có shipping: lấy sẵn thông tin từ profile (bảng khachhang)
+ 		$sql_get_profile = mysqli_query($con,"SELECT tenkhachhang, dienthoai, diachi FROM khachhang WHERE id='$id_dangky' LIMIT 1");
+ 		if(mysqli_num_rows($sql_get_profile) > 0){
+ 			$row_profile = mysqli_fetch_array($sql_get_profile);
+ 			$name = $row_profile['tenkhachhang'];
+ 			$phone = $row_profile['dienthoai'];
+ 			$address = $row_profile['diachi'];
+ 		}else{
+ 			$name = '';
+ 			$phone = '';
+ 			$address = '';
+ 		}
  		$note = '';
  	}
  	?>
@@ -77,13 +88,14 @@
 	    <input type="text" name="note" class="form-control" value="<?php echo $note ?>"  placeholder="..." >
 	  </div>
       <?php
-	  if($name=='' && $phone=='') {
+	  // Nếu chưa có bản ghi shipping -> lưu mới, ngược lại cho phép cập nhật
+	  if($count == 0) {
 	  ?>
-	  <button type="submit" name="themvanchuyen" class="btn btn-primary">Thêm thông tin</button><br><br>
+	  <button type="submit" name="themvanchuyen" class="btn btn-primary">Lưu thông tin giao hàng</button><br><br>
 	  <?php
-	  } elseif($name!='' && $phone!=''){
+	  } else {
 	  ?>
-	  <button type="submit" name="capnhatvanchuyen" class="btn btn-success">Cập nhật thông tin</button><br><br>
+	  <button type="submit" name="capnhatvanchuyen" class="btn btn-success">Cập nhật thông tin giao hàng</button><br><br>
 	  <?php
 	  } 
 	  ?>
@@ -140,11 +152,11 @@
         <?php
         if(isset($_SESSION['dangnhap'])){
             ?>
-            <p class="chinhsua"><a  href="index2.php?quanly=hinhthucthanhtoan">Hình thức thanh toán</a></p>
+            <p class="chinhsua"><a  href="index.php?quanly=hinhthucthanhtoan">Hình thức thanh toán</a></p>
        <?php 
        }else{
         ?>
-        <p><a class="chinhsua"  href="index2.php?quanly=dangnhap">Đăng nhập Đặt hàng</a></p>
+        <p><a class="chinhsua"  href="index.php?quanly=dangnhap">Đăng nhập Đặt hàng</a></p>
        
        <?php }?>
         

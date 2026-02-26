@@ -17,10 +17,10 @@ if(isset($_SESSION['dangnhap'])){
     <br>
     <!-- Responsive Arrow Progress Bar -->
     <div class="arrow-steps clearfix">
-    <div class="step current"> <span> <a href="index2.php?quanly=giohang" >Giỏ hàng</a></span> </div>
-    <div class="step"> <span><a href="index2.php?quanly=vanchuyen" >Vận chuyển</a></span> </div>
-    <div class="step"> <span><a href="index2.php?quanly=hinhthucthanhtoan" >Thanh toán</a><span> </div>
-    <div class="step"> <span><a href="index2.php?quanly=lichsudonhang" >Lịch sử đơn hàng</a><span> </div>
+    <div class="step current"> <span> <a href="index.php?quanly=giohang" >Giỏ hàng</a></span> </div>
+    <div class="step"> <span><a href="index.php?quanly=vanchuyen" >Vận chuyển</a></span> </div>
+    <div class="step"> <span><a href="index.php?quanly=hinhthucthanhtoan" >Thanh toán</a><span> </div>
+    <div class="step"> <span><a href="index.php?quanly=lichsudonhang" >Lịch sử đơn hàng</a><span> </div>
     </div>
     
     <?php
@@ -85,11 +85,11 @@ if(isset($_SESSION['dangnhap'])){
         <?php
         if(isset($_SESSION['dangnhap'])){
             ?>
-            <p><a class="chinhsua" href="index2.php?quanly=vanchuyen">Đặt hàng</a></p>
+            <p><a class="chinhsua" href="index.php?quanly=vanchuyen">Đặt hàng</a></p>
        <?php 
        }else{
         ?>
-        <p><a class="chinhsua" href="index2.php?quanly=dangnhap">Đăng nhập Đặt hàng</a></p>
+        <p><a class="chinhsua" href="index.php?quanly=dangnhap">Đăng nhập Đặt hàng</a></p>
        
        <?php }?>
         

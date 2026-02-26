@@ -1,0 +1,14 @@
+### Bỏ qua thư viện editor nặng
+admin/resources/ckeditor/
+admin/resources/ckfinder/
+
+### Bỏ qua file upload (không cần đưa lên GitHub)
+admin/uploads/
+
+### Bỏ qua file IDE/editor
+.vscode/
+.idea/
+*.log
+
+
+

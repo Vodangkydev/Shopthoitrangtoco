@@ -1,5 +1,10 @@
+<?php
+// Bắt đầu output buffering để có thể redirect sau khi đã có output
+ob_start();
+session_start();
 
-
+include "connect_db.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,27 +20,24 @@
 <body>
     <div class="wrapper">
         <?php
-        session_start();
-
-        include "pages/header.php";
         
-        include "connect_db.php";
-       
+        include "pages/topbar.php";
+        include "pages/header.php";
         include "pages/menu.php";
-        include "pages/slideshow.php";
+        include "pages/breadcrumb.php";
+       
           
         
 
-        include "pages/main2.php";
+        include "pages/main.php";
 
-        include "pages/vitri.php";
+       
 
 
         include "pages/footer.php";
-
-     
         ?>
-     <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <script src="js/main.js"></script>
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
 <df-messenger
   intent="WELCOME"
   chat-title="Tocomenswear"

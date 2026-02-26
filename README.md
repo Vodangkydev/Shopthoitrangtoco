@@ -1,124 +1,151 @@
-# 🛍️ Website Bán Đồ Thời Trang
+## 🛍️ Website Bán Đồ Thời Trang – PHP thuần
 
-## 📝 Mô tả dự án
+Website bán đồ thời trang (Toco Menswear) được xây dựng bằng **PHP thuần + MySQL**, chạy trên XAMPP, có đầy đủ luồng **mua hàng – giỏ hàng – đặt hàng – quản trị sản phẩm/đơn hàng** và tích hợp **chatbot Dialogflow**.
 
-Website bán đồ thời trang được phát triển bằng PHP thuần với giao diện người dùng thân thiện và hệ thống quản trị admin hoàn chỉnh. Dự án bao gồm đầy đủ các chức năng cần thiết cho một website thương mại điện tử.
+### 1. Tính năng chính
 
-## ✨ Tính năng chính
+- **Trang chủ & hiển thị sản phẩm**
+  - Liệt kê **sản phẩm mới nhất**, **sản phẩm khuyến mãi** và **toàn bộ sản phẩm** với phân trang.
+  - Bộ lọc/sắp xếp sản phẩm theo: **mới nhất**, **giá thấp/cao**, **giá sau giảm thấp/cao**.
+  - Hỗ trợ **wishlist (yêu thích)** lưu trong session.
+- **Giỏ hàng & mua hàng**
+  - Thêm sản phẩm vào giỏ, **tăng/giảm số lượng**, chọn **size (M/L/XL)**, xoá từng dòng hoặc xoá toàn bộ.
+  - Tính **tổng tiền** theo số lượng và giá.
+  - Luồng đặt hàng: Giỏ hàng → Vận chuyển → Hình thức thanh toán → Cảm ơn / Lịch sử đơn hàng.
+- **Tài khoản khách hàng**
+  - Đăng ký/đăng nhập, lưu thông tin vào bảng `khachhang`.
+  - Đăng nhập dùng **prepared statement** để chống SQL injection, có tùy chọn **ghi nhớ tài khoản bằng cookie**.
+  - Sau khi đăng nhập, khách hàng có thể đặt hàng và xem **lịch sử đơn hàng**.
+- **Đặt hàng & thanh toán**
+  - Lưu đơn hàng vào bảng `cart` và chi tiết vào `cart_details` (sản phẩm, số lượng, size).
+  - Hỗ trợ hình thức thanh toán: **tiền mặt**, **chuyển khoản** (VNPay đang để placeholder “chưa cập nhật”).
+  - Sử dụng **Carbon** để lưu thời gian tạo đơn (`cart_date`) theo múi giờ `Asia/Ho_Chi_Minh`.
+- **Chatbot Dialogflow**
+  - Tích hợp **Dialogflow Messenger** trực tiếp trên `index.php` (thẻ `<df-messenger>`), hỗ trợ khách hàng tự động.
 
-### 🛒 Phía người dùng
-- **Trang chủ**: Hiển thị sản phẩm nổi bật, banner quảng cáo
-- **Danh mục sản phẩm**: Phân loại sản phẩm theo danh mục
-- **Tìm kiếm**: Tìm kiếm sản phẩm theo tên
-- **Giỏ hàng**: Thêm, xóa, cập nhật số lượng sản phẩm
-- **Đăng ký/Đăng nhập**: Hệ thống tài khoản người dùng
-- **Thanh toán**: Hỗ trợ nhiều hình thức thanh toán
-- **Lịch sử đơn hàng**: Theo dõi trạng thái đơn hàng
-- **Tin tức**: Cập nhật thông tin mới nhất
-- **Liên hệ**: Thông tin liên hệ và hỗ trợ
+### 2. Hệ thống quản trị (Admin)
 
-### 🔧 Phía quản trị (Admin)
-- **Quản lý sản phẩm**: Thêm, sửa, xóa sản phẩm
-- **Quản lý danh mục**: Phân loại sản phẩm
-- **Quản lý đơn hàng**: Xem và cập nhật trạng thái đơn hàng
-- **Quản lý người dùng**: Hệ thống tài khoản admin
-- **Upload hình ảnh**: Tích hợp CKEditor và CKFinder
-- **Thống kê**: Báo cáo doanh thu và đơn hàng
+Admin nằm trong thư mục `admin/`, đăng nhập bằng bảng `user`:
 
-## 🛠️ Công nghệ sử dụng
+- **Quản lý sản phẩm (`product`)**
+  - Xem danh sách sản phẩm với phân trang, ảnh, tên, ngày tạo/cập nhật.
+  - Thêm, sửa, xoá, **copy sản phẩm** (tạo nhanh từ sản phẩm có sẵn).
+  - Quản lý **thư viện ảnh** theo sản phẩm (bảng `image_library`, thư mục `admin/uploads/`).
+- **Quản lý đơn hàng (`cart`, `cart_details`)**
+  - Danh sách đơn hàng: mã đơn, khách hàng, hình thức thanh toán, **trạng thái đơn**:
+    - 1: Đơn hàng mới  
+    - 2: Đang chuẩn bị  
+    - 3: Đang giao  
+    - 4: Hoàn thành
+  - Xem chi tiết đơn hàng, cập nhật trạng thái.
+- **Quản lý danh mục (`danhmuc`) & nội dung khác**
+  - Danh mục sản phẩm (Áo, Quần, Nón, …).
+  - Nội dung liên hệ (`lienhe`) được lưu HTML (nhập từ CKEditor trong admin).
+- **Công cụ trong admin**
+  - Đăng nhập admin, header/footer riêng, phân trang chung (`admin/pagination.php`).
+  - Upload hình ảnh với CKEditor + CKFinder.
 
-- **Backend**: PHP thuần
-- **Database**: MySQL
-- **Frontend**: HTML, CSS, JavaScript
-- **Editor**: CKEditor + CKFinder
-- **Chatbot**: Dialogflow Messenger
-- **Thư viện**: Carbon (PHP DateTime)
+### 3. Công nghệ & thư viện
 
-## 📁 Cấu trúc thư mục
+- **Backend**: PHP thuần (`mysqli`)
+- **Database**: MySQL / MariaDB
+- **Frontend**: HTML, CSS, JavaScript (custom)
+- **Editor**: CKEditor + CKFinder (trong `admin/resources/`)
+- **Chatbot**: Dialogflow Messenger (thẻ `<df-messenger>` trong `index.php`)
+- **Thư viện PHP**: Carbon (thư mục `carbon/`) dùng cho xử lý ngày giờ đặt hàng
 
-```
+### 4. Cấu trúc thư mục chính
+
+```text
 Shopthoitrangtoco/
 ├── admin/                 # Hệ thống quản trị
-│   ├── admin/            # Giao diện admin
-│   ├── css/              # Style cho admin
-│   ├── images/           # Hình ảnh admin
-│   ├── resources/        # CKEditor, CKFinder
-│   └── uploads/          # Thư mục upload file
-├── carbon/               # Thư viện Carbon
-├── css/                  # Style cho frontend
-├── images/               # Hình ảnh sản phẩm
-├── pages/                # Các trang chức năng
-│   ├── main/            # Trang chính
-│   └── sidebar/         # Sidebar
-├── connect_db.php        # Kết nối database
-├── demo_db.sql          # Database schema
-└── index.php            # Trang chủ
+│   ├── admin/             # Trang CRUD sản phẩm, đơn hàng, danh mục, liên hệ,...
+│   ├── css/               # CSS cho admin
+│   ├── images/            # Ảnh cho giao diện admin
+│   ├── resources/         # CKEditor, CKFinder (đã ignore trong Git)
+│   └── uploads/           # Ảnh sản phẩm upload (đã ignore trong Git)
+├── carbon/                # Thư viện Carbon PHP
+├── css/                   # CSS cho frontend
+├── images/                # Ảnh banner, logo, v.v.
+├── js/                    # JS cho frontend (ví dụ: main.js)
+├── pages/
+│   ├── main/              # Các trang chức năng: giỏ hàng, đăng nhập, thanh toán,...
+│   └── sidebar/           # Sidebar, khối phụ
+├── connect_db.php         # Cấu hình kết nối database (frontend)
+├── admin/connect_db.php   # Cấu hình kết nối database (admin)
+├── demo_db.sql            # File SQL tạo bảng + dữ liệu mẫu
+├── database_deploy.sql    # Script triển khai DB (nếu cần)
+├── index.php              # Entry chính frontend (gộp header/menu/main/footer + chatbot)
+└── .gitignore             # Bỏ qua resources nặng & uploads
 ```
-## Video demo: https://drive.google.com/file/d/1fSLTQLYOZnjU5KCxOsEM0xoPe0SJSEp2/view?usp=drive_link
 
-## 🚀 Cài đặt và chạy dự án
+### 5. Cài đặt & chạy dự án (XAMPP)
 
-### Yêu cầu hệ thống
-- PHP 7.0 trở lên
-- MySQL 5.7 trở lên
-- Web server (Apache/Nginx)
+#### Yêu cầu
 
-### Các bước cài đặt
+- PHP 7.0+  
+- MySQL 5.7+ / MariaDB  
+- XAMPP (Apache + MySQL) hoặc server tương đương
+
+#### Các bước
 
 1. **Clone dự án**
-   ```bash
-   git clone [URL_REPOSITORY]
-   cd Shopthoitrangtoco
-   ```
 
-2. **Cài đặt database**
-   - Tạo database mới trong MySQL
-   - Import file `demo_db.sql` vào database
+```bash
+git clone [URL_REPOSITORY]
+cd Shopthoitrangtoco
+```
+
+2. **Tạo database & import dữ liệu**
+
+- Mở `phpMyAdmin` (`http://localhost/phpmyadmin`)
+- Tạo database mới, ví dụ: `demo_db`
+- Import file `demo_db.sql` vào database này.
 
 3. **Cấu hình kết nối database**
-   - Mở file `connect_db.php`
-   - Cập nhật thông tin kết nối:
-     ```php
-     $host = "localhost";
-     $user = "root";
-     $password = "";
-     $database = "demo_db";
-     ```
 
-4. **Cấu hình web server**
-   - Đặt thư mục dự án vào thư mục web server
-   - Đảm bảo PHP có quyền đọc/ghi file
+- Mở `connect_db.php` và `admin/connect_db.php`, đảm bảo thông tin giống database vừa tạo:
+
+```php
+$host = "localhost";
+$user = "root";
+$password = "";
+$database = "demo_db";
+```
+
+4. **Đặt thư mục dự án vào XAMPP**
+
+- Đảm bảo cả project nằm tại: `C:\xampp\htdocs\Shopthoitrangtoco`
+- Start **Apache** và **MySQL** trong XAMPP.
 
 5. **Truy cập website**
-   - Frontend: `http://localhost/Shopthoitrangtoco/`
-   - Admin: `http://localhost/Shopthoitrangtoco/admin/`
 
-## 👤 Tài khoản mặc định
+- Frontend: `http://localhost/Shopthoitrangtoco/`
+- Admin: `http://localhost/Shopthoitrangtoco/admin/`
 
-### Admin
-- **Username**: admin
-- **Password**: admin
+### 6. Tài khoản mẫu
 
-### Database
-- **Database name**: demo_db
-- **Host**: localhost
-- **User**: root
-- **Password**: (để trống)
+- **Admin** (bảng `user` trong `demo_db.sql`)
+  - Username: `admin`
+  - Password: `123`
+- **Khách hàng**: Có sẵn một số dòng trong bảng `khachhang`, bạn có thể đăng ký thêm từ giao diện người dùng.
 
-## 📱 Tính năng nổi bật
+### 7. Ghi chú Git & dung lượng
 
-- **Responsive Design**: Tương thích với mọi thiết bị
-- **Chatbot tích hợp**: Hỗ trợ khách hàng 24/7
-- **Quản lý hình ảnh**: Upload và quản lý hình ảnh dễ dàng
-- **Hệ thống thanh toán**: Đa dạng phương thức thanh toán
-- **Bảo mật**: Session management và validation
-- **SEO friendly**: Tối ưu cho công cụ tìm kiếm
+- `.gitignore` đã cấu hình KHÔNG commit:
+  - `admin/resources/ckeditor/`
+  - `admin/resources/ckfinder/`
+  - `admin/uploads/`
+- Khi clone từ GitHub:
+  - Có thể **tải lại CKEditor/CKFinder** và đặt đúng thư mục nếu cần chỉnh sửa nội dung rich text.
 
-## 🔒 Bảo mật
+### 8. Lưu ý
 
-- Sử dụng session để quản lý đăng nhập
-- Validation dữ liệu đầu vào
-- Prepared statements cho truy vấn database
-- Bảo vệ chống SQL injection
+- Dự án mang tính **học tập/đồ án**, chưa hoàn thiện toàn bộ về bảo mật (mật khẩu đang lưu plain-text trong DB demo).
+- Không nên dùng trực tiếp cho môi trường production nếu chưa:
+  - Hash mật khẩu (bcrypt, password_hash, …).
+  - Rà soát toàn bộ input, CSRF, XSS, quyền truy cập admin, v.v.
 
-**Lưu ý**: Đây là dự án học tập, vui lòng không sử dụng cho mục đích thương mại mà không có sự cho phép. 
+
+
+

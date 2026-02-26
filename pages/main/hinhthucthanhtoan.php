@@ -5,10 +5,10 @@
   <br>
   <!-- Responsive Arrow Progress Bar -->
   <div class="arrow-steps clearfix">
-    <div class="step done"> <span> <a href="index2.php?quanly=giohang" >Giỏ hàng</a></span> </div>
-    <div class="step done"> <span><a href="index2.php?quanly=vanchuyen" >Vận chuyển</a></span> </div>
-    <div class="step current"> <span><a href="index2.php?quanly=hinhthucthanhtoan" >Thanh toán</a><span> </div>
-    <div class="step"> <span><a href="index2.php?quanly=lichsudonhang" >Lịch sử đơn hàng</a><span> </div>
+    <div class="step done"> <span> <a href="index.php?quanly=giohang" >Giỏ hàng</a></span> </div>
+    <div class="step done"> <span><a href="index.php?quanly=vanchuyen" >Vận chuyển</a></span> </div>
+    <div class="step current"> <span><a href="index.php?quanly=hinhthucthanhtoan" >Thanh toán</a><span> </div>
+    <div class="step"> <span><a href="index.php?quanly=lichsudonhang" >Lịch sử đơn hàng</a><span> </div>
   </div>
   <?php
   } 
@@ -100,15 +100,35 @@
   		<div class="form-check">
 		  <input class="form-check-input" type="radio" name="payment" id="exampleRadios1" value="tienmat" checked>
 		  <label class="form-check-label" for="exampleRadios1">
-		    Tiền mặt
+		    Tiền mặt khi nhận hàng (COD)
 		  </label>
 		</div>
 		<div class="form-check">
 		  <input class="form-check-input" type="radio" name="payment" id="exampleRadios2" value="chuyenkhoan">
 		  <label class="form-check-label" for="exampleRadios2">
-		    Chuyển khoản
+		    Chuyển khoản ngân hàng
 		  </label>
 		</div>
+
+        <div class="payment-details">
+            <div class="payment-cash">
+                <p>Bạn sẽ thanh toán tiền mặt trực tiếp cho nhân viên giao hàng khi nhận sản phẩm.</p>
+            </div>
+            <div class="payment-bank-transfer" style="display:none;">
+                <p><strong>Thông tin chuyển khoản:</strong></p>
+                <ul>
+                    <li>Ngân hàng: Sacombank - Chi nhánh Gò Vấp</li>
+                    <li>Chủ tài khoản: Vo Dang Ky</li>
+                    <li>Số tài khoản: <strong>050122494737</strong></li>
+                </ul>
+                <p><strong>Nội dung chuyển khoản:</strong>  Họ tên + "TOCO"</p>
+                <p>Sau khi chuyển khoản thành công, đơn hàng sẽ được xác nhận và giao cho bạn trong thời gian sớm nhất.</p>
+                <div class="payment-qr">
+                    <p><strong>Quét mã QR để chuyển khoản nhanh:</strong></p>
+                    <img src="images/sacombank.jpg" alt="QR chuyển khoản TOCO Menswear">
+                </div>
+            </div>
+        </div>
 		
 		<input type="submit" value="Thanh toán ngay" name="redirect" class="btn btn-danger">
 	</div>	

@@ -62,7 +62,7 @@ else{
         <?php
         for($i=1;$i<=$trang;$i++){
             ?>
-            <li <?php if($i==$page) {echo 'style="background:red"';}  else {echo '';} ?>><a  href="index2.php?trang=<?php echo $i?>"><?php echo $i?></a></li> 
+            <li <?php if($i==$page) {echo 'style="background:red"';}  else {echo '';} ?>><a  href="index.php?trang=<?php echo $i?>"><?php echo $i?></a></li> 
             <?php if($i%3==0){?><br><br>
             <?php }?>
             <?php 

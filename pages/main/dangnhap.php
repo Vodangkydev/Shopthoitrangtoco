@@ -1,36 +1,17 @@
-
 <?php
+// Xử lý đăng nhập
+$error = '';
+$msg = '';
+$msgcookie = '';
 
-if (isset($_POST['dangnhap'])&&($_POST['dangnhap'])){
-    $email=$_POST['email'];
-    $password=$_POST['password'];
-    if(($email=="tocomenswear")&&($password="123")){
-        echo"Đăng nhập thành công";
-    }else{
-       echo "Vui lòng đăng nhập";
-    }
-    if(isset($_POST['ghinho'])&&($_POST['ghinho'])){
-        setcookie("email",$email,time()+(86400*7));
-        setcookie("password",$password,time()+(86400*7));
-        $msgcookie="Đã ghi nhận cookie!";
-    }
-}
-// Thực hiện kết nối đến cơ sở dữ liệu
-// Ví dụ:
-// $con = mysqli_connect("tên_máy_chủ", "tên_người_dùng", "mật_khẩu", "tên_cơ_sở_dữ_liệu");
-// Hãy thay đổi thông tin kết nối phù hợp với cấu hình của bạn
-
-// Kiểm tra nút đăng nhập được nhấn
 if (isset($_POST['dangnhap'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
     if (empty($email)) {
         $error = "Bạn phải nhập Email";
-        echo $error;
     } elseif (empty($password)) {
         $error = "Bạn phải nhập Mật khẩu";
-        echo $error;
     } else {
         // Sử dụng Prepared Statements để tránh SQL Injection
         $sql = "SELECT * FROM `khachhang` WHERE email=? AND matkhau=?";
@@ -45,22 +26,29 @@ if (isset($_POST['dangnhap'])) {
             // Đếm số hàng trả về từ truy vấn
             if ($result && mysqli_num_rows($result) > 0) {
                 $row = mysqli_fetch_array($result);
-                echo '<p style="color:green">Đăng nhập thành công</p>';
                 $_SESSION['dangnhap'] = $row['tenkhachhang'];
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['id_khachhang'] = $row['id'];
 
-                echo $_SESSION['dangnhap'];
+                // Xử lý ghi nhớ đăng nhập
+                if(isset($_POST['ghinho']) && ($_POST['ghinho'])){
+                    setcookie("email", $email, time()+(86400*7));
+                    setcookie("password", $password, time()+(86400*7));
+                }
 
-                header("Location: index2.php?quanly=giohang");
+                // Xóa output buffer và redirect (output buffer được bắt đầu ở index.php)
+                if (ob_get_level() > 0) {
+                    ob_end_clean();
+                }
+                header("Location: index.php");
                 exit(); // Kết thúc quá trình thực thi sau khi chuyển hướng
             } else {
-                echo '<p style="color:red;padding:15px;font-size:20px;">Đăng nhập không thành công.Vui lòng nhập lại</p>';
+                $error = "Đăng nhập không thành công. Vui lòng nhập lại";
             }
+            mysqli_stmt_close($stmt);
         } else {
-            echo "Lỗi trong quá trình chuẩn bị truy vấn";
+            $error = "Lỗi trong quá trình chuẩn bị truy vấn";
         }
-        mysqli_stmt_close($stmt);
     }
 }
 ?>
@@ -83,11 +71,14 @@ if (isset($_POST['dangnhap'])) {
             <td colspan="2"><input type="submit" name="dangnhap" value="Đăng Nhập"></td>
         </tr>
         <tr>
-            <td colspan="2"><a href="index2.php?quanly=dangky">Đăng ký</a></td>
+            <td colspan="2"><a href="index.php?quanly=dangky">Đăng ký</a></td>
         </tr>
         <?php
-        if(isset($msg)) echo $msg;
-        if(isset($msgcookie)) echo $msgcookie;
+        if(!empty($error)) {
+            echo '<tr><td colspan="2"><p style="color:red;padding:15px;font-size:20px;">' . $error . '</p></td></tr>';
+        }
+        if(isset($msg)) echo '<tr><td colspan="2">' . $msg . '</td></tr>';
+        if(isset($msgcookie)) echo '<tr><td colspan="2">' . $msgcookie . '</td></tr>';
         ?>
     </table>
 </form>

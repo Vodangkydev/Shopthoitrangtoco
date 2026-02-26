@@ -37,7 +37,13 @@
 				mysqli_query($con,$insert_order_details);
 		}
 		unset($_SESSION['cart']);
-		header('Location:../../index2.php?quanly=camon');
+
+        // Lưu thông tin đơn hàng cuối cùng để hiển thị ở trang cảm ơn / hướng dẫn chuyển khoản
+        $_SESSION['last_payment_method'] = $cart_payment;
+        $_SESSION['last_order_code'] = $code_order;
+        $_SESSION['last_order_total'] = $tongtien;
+
+		header('Location:../../index.php?quanly=camon');
 	
 	}elseif($cart_payment=='vnpay'){
         echo '<script>alert("Tính năng chưa được cập nhập")</script>';

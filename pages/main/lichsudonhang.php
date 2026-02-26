@@ -39,8 +39,8 @@
     	}elseif($row['cart_status']==2){
     		echo '<span style="font-size:15px ;color:#32c711";> Đang Chuẩn Bị</span>';
     	}
-        elseif($row['cart_status']==2){
-            echo '<span style="font-size:15px ;color:yellow";> Đang Giao</span>';
+        elseif($row['cart_status']==3){
+            echo '<span style="font-size:15px ;color:Green";> Đang Giao</span>';
         }else{
             echo '<span style="font-size:15px ;color:red";> Hoàn Thành</span>';
         }
@@ -48,7 +48,7 @@
     </td>
     <td><?php echo $row['cart_date'] ?></td>
    	<td>
-   		<a href="index2.php?quanly=xemdonhang&code=<?php echo $row['code_cart'] ?>">Xem đơn hàng</a> 
+   		<a href="index.php?quanly=xemdonhang&code=<?php echo $row['code_cart'] ?>">Xem đơn hàng</a> 
    	</td>
    	<td>
    		<?php 

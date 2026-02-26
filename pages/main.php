@@ -1,15 +1,35 @@
-<div id="main">
+<?php
+// Xác định trang hiện tại
+if(isset($_GET['quanly'])){
+    $tam = $_GET['quanly'];
+} else{
+    $tam = "";
+}
+
+// Những trang không cần sidebar, cho phép maincontent full màn hình
+$pages_khong_sidebar = [
+    'giohang',
+    'vanchuyen',
+    'thanhtoan',
+    'hinhthucthanhtoan',
+    'camon',
+    'lichsudonhang',
+    'xemdonhang',
+    'dangnhap'
+];
+
+$main_class = in_array($tam, $pages_khong_sidebar) ? 'no-sidebar' : '';
+?>
+
+<div id="main" class="<?php echo $main_class; ?>">
            <?php
-           include "./pages/sidebar/sidebar.php"
+           // Chỉ hiển thị sidebar trên những trang không nằm trong danh sách $pages_khong_sidebar
+           if(!in_array($tam, $pages_khong_sidebar)){
+               include "./pages/sidebar/sidebar.php";
+           }
            ?>
             <div class="maincontent">
             <?php
-           if(isset($_GET['quanly'])){
-            $tam =$_GET['quanly'];
-           }
-           else{
-            $tam="";
-           }
            if($tam=='danhmucsanpham'){
             include "main/danhmuc.php";
            }else if($tam=='giohang'){
@@ -56,6 +76,12 @@
         elseif($tam=='tintuc'){
             include("main/tintuc.php");
         }
+elseif($tam=='yeuthich'){
+    include("main/yeuthich.php");
+}
+elseif($tam=='yeuthichdanhsach'){
+    include("main/yeuthichdanhsach.php");
+}
            
            
            else{

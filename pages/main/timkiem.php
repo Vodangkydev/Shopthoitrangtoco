@@ -17,13 +17,23 @@
                 <ul class="product_list">
                     <?php 
                     while($row = mysqli_fetch_array($result)){
-                     
+                        $discount = isset($row['discount_percent']) ? (int)$row['discount_percent'] : 0;
+                        $sale_price = 0;
+                        if($discount > 0 && $discount <= 100) {
+                            $sale_price = $row['price'] * (1 - $discount / 100);
+                        }
                         ?>
                     <li>
-                        <a href="index2.php?quanly=sanpham&id=<?= $row['id'] ?> " > 
-                        <img src="/admin/<?= $row['image'] ?>">
+                        <a href="index.php?quanly=sanpham&id=<?= $row['id'] ?> " >
+                        <img src="admin/<?= $row['image'] ?>">
                         <p class="name_sp">Tên Sản Phẩm: <?= $row['name'] ?></p>
-                        <p class="gia_sp">Giá: <?= $row['price'] ?></p>
+                        <?php if($discount > 0 && $sale_price > 0){ ?>
+                            <p class="gia_sp">Giá: <span style="color: red;"><?= number_format($sale_price,0,',','.').'₫' ?></span> 
+                            <span style="text-decoration: line-through; color: #999;"><?= number_format($row['price'],0,',','.').'₫' ?></span>
+                            <span style="background: red; color: white; padding: 2px 6px; margin-left: 5px; border-radius: 3px;">-<?= $discount ?>%</span></p>
+                        <?php } else { ?>
+                            <p class="gia_sp">Giá: <?= number_format($row['price'],0,',','.').'₫' ?></p>
+                        <?php } ?>
                         </a>
                     </li>
 

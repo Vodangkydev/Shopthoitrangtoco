@@ -31,7 +31,7 @@
   	<td><?php echo $i ?></td>
     <td><?php echo $row['code_cart'] ?></td>
     <td><?php echo $row['name'] ?></td>
-    <td><img src="./admin<?php echo $row['image'];?>" width="150px" ></td>
+    <td><img src="admin<?php echo $row['image'];?>" width="150px" ></td>
     <td><?php echo $row['soluong'] ?></td>
     <td><?php echo $row['size'] ?></td>
     <td><?php echo number_format($row['price'],0,',','.').' VNĐ' ?></td>
