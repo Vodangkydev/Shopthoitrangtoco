@@ -1,4 +1,15 @@
-## 🛍️ Website Bán Đồ Thời Trang – PHP thuần
+<img width="305" height="429" alt="image" src="https://github.com/user-attachments/assets/e6d613f7-dd7f-4820-8725-3e3e601584e5" />## 🛍️ Website Bán Đồ Thời Trang – PHP thuần
+user>
+<img width="1903" height="1080" alt="image" src="https://github.com/user-attachments/assets/052227a2-cc3e-4eac-86a4-9f6799ba6407" />
+<img width="1910" height="1072" alt="image" src="https://github.com/user-attachments/assets/0d1d74e9-74b2-40fe-8f15-f8172197366a" />
+<img width="1900" height="872" alt="image" src="https://github.com/user-attachments/assets/5e097aba-dc1e-42b9-adba-3bf2183085c7" />
+<img width="1887" height="783" alt="image" src="https://github.com/user-attachments/assets/5220f4f5-e581-4db1-9146-4789f63540ed" />
+<img width="1875" height="878" alt="image" src="https://github.com/user-attachments/assets/e9dc461f-368a-4b12-aca7-b19a574b1ff9" />
+<img width="1682" height="810" alt="image" src="https://github.com/user-attachments/assets/953642d3-fbfb-4fa1-8f49-4cbc0a60f85f" />
+<img width="305" height="429" alt="image" src="https://github.com/user-attachments/assets/8a626f09-8b5e-453f-bf22-318267997a5b" />
+admin>
+<img width="1721" height="868" alt="image" src="https://github.com/user-attachments/assets/c8563a32-139b-407c-97ac-8fa869e52113" />
+
 
 Website bán đồ thời trang (Toco Menswear) được xây dựng bằng **PHP thuần + MySQL**, chạy trên XAMPP, có đầy đủ luồng **mua hàng – giỏ hàng – đặt hàng – quản trị sản phẩm/đơn hàng** và tích hợp **chatbot Dialogflow**.
 
