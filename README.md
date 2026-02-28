@@ -6,7 +6,8 @@ user>
 <img width="1887" height="783" alt="image" src="https://github.com/user-attachments/assets/5220f4f5-e581-4db1-9146-4789f63540ed" />
 <img width="1875" height="878" alt="image" src="https://github.com/user-attachments/assets/e9dc461f-368a-4b12-aca7-b19a574b1ff9" />
 <img width="1682" height="810" alt="image" src="https://github.com/user-attachments/assets/953642d3-fbfb-4fa1-8f49-4cbc0a60f85f" />
-<img width="305" height="429" alt="image" src="https://github.com/user-attachments/assets/8a626f09-8b5e-453f-bf22-318267997a5b" />
+<<img width="1694" height="851" alt="image" src="https://github.com/user-attachments/assets/a494768f-c2a5-49e6-9290-48b28ef5c41f" />
+
 admin>
 <img width="1721" height="868" alt="image" src="https://github.com/user-attachments/assets/c8563a32-139b-407c-97ac-8fa869e52113" />
 
